@@ -27,12 +27,19 @@ List* insert (List* l, Student* i)
 	return new;
 }
 
-List* initialize (void)
-{
-	return NULL;
+void print_list(List* l){
+	List* aux;
+	
+	int students = 0;
+	float sumedia = 0;
+	
+	for (aux = l; aux != NULL; aux = aux -> prox, students ++)
+			sumedia += ((aux -> classmate -> grades[0] + aux -> classmate -> grades[1]) / 2);
+	
+	printf("\n\n\t %f\n\n", sumedia / students);
 }
 
-Student* initializeStudent (void)
+List* initialize (void)
 {
 	return NULL;
 }
@@ -44,12 +51,20 @@ int main (void)
 	
  	Student* s;
 	s -> grades[0] = 4.5;
-//	s -> grades[1] = 6.9;
-	//s -> name = "Bruno Casali";
+	s -> grades[1] = 6.9;
+	s -> name = "Bruno Casali";
 	
 	l = insert(l, s);
 	
-	printf("ASUDG IYAGSUYDGASUYGDUYAS\n\n");
+	s -> grades[0] = 8.1;
+	s -> grades[1] = 9.4;
+	s -> name = "Maria Joana";
+	
+	l = insert(l, s);
+	
+	printf("And it's O.K\n\n");
+	
+	print_list(l);
 	
 	return 0;
 }
